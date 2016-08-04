@@ -1,7 +1,8 @@
 # PayPal
 实现了PayPal从后台发起支付请求,并非从from表单中提交,提升了安全性。
----
-#### 如何使用
+
+#### 如何使用：
+
 1. **使用对象方式调用：**
 ```
 Pay PayPal = new Pay("PayPal沙盒测试地址或正式地址");
@@ -19,7 +20,9 @@ PayPal.PostPay(new PayPalObj()
        charset = "编码格式"
   });
 ```
-2. **自定义参数方式调用**
+使用对象方式只支持以上参数,如果需要更多参数,请使用自定义参数方式调用。
+
+2. **自定义参数方式调用：**
 ```
  Dictionary<string, string> Dt_Parames = new Dictionary<string, string>();
  /*添加自定义参数：*/
