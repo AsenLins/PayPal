@@ -22,6 +22,7 @@ PayPal.PostPay(new PayPalObj()
        return_url = "支付成功跳转地址",
        notify_url = "支付成功的异步回调地址",
        cancel_return = "用户取消支付跳转地址",
+       custom="用于IPN回传用户自定义的参数",
        charset = "编码格式"
   });
 ```
