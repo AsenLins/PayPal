@@ -38,9 +38,11 @@ PayPal.PostPay(new PayPalObj()
 
 #### 使用注意：
 IPN验证以及支付请求如果出现建立SSL/TSL通道失败的异常,请使用以下方式解决问题：
+
 1. 安装.net 版本4.5。
 
 2. 使用已下代码,该代码使用的.net版本最低也要4.0,而且不一定会成功。
+3. 
 ```
 System.Net.ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 ```
