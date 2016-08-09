@@ -14,9 +14,9 @@ Pay PayPal = new Pay("PayPal沙盒测试地址或正式地址");
 
 PayPal.PostPay(new PayPalObj()
    {
-       business = "卖家邮箱",
-       item_name ="商品名称",
-       quantity = "数量",
+       business = "卖家邮箱/卖家账号",
+       item_name ="订单名称",
+       quantity = "订单数量",
        amount = "金额",
        currency_code = "货币",
        return_url = "支付成功跳转地址",
