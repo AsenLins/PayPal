@@ -66,8 +66,8 @@ System.Net.ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 ---
 
 #### PayPal参数列表
-1. [支付参数列表](https://www.paypal-biz.com/product/pdf/PayPal_WPS_Guide_CN_V2.0.pdf)
-2. [IPN消息列表](https://www.paypal-biz.com/product/pdf/PayPal_IPN&PDT_Guide_V1.0.pdf])
+1. [PayPal标准集成流程以及支付参数列表](https://www.paypal-biz.com/product/pdf/PayPal_WPS_Guide_CN_V2.0.pdf)
+2. [IPN流程以及消息参数列表](https://www.paypal-biz.com/product/pdf/PayPal_IPN&PDT_Guide_V1.0.pdf])
 3. [Pay支付的货币码列表](https://developer.paypal.com/docs/classic/api/currency_codes/?mark=currency)
 
 
