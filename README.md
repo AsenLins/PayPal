@@ -3,7 +3,9 @@
 1. 使用PayPal标准集成API从后台发起支付请求,并非从from表单中提交,提升了安全性。
 2. 实现了IPN消息验证函数。
 
-#### 如何使用：
+---
+
+### 如何使用：
 
 **使用对象方式调用：**
 
@@ -37,6 +39,7 @@ PayPal.PostPay(new PayPalObj()
  Pay PayPal=new Pay("PayPal沙盒测试地址或正式地址");
  PayPal.PostPay(Dt_Parames);
 ```
+---
 
 #### 使用注意：
 IPN验证以及支付请求如果出现建立SSL/TSL通道失败的异常,请使用以下方式解决问题：
@@ -48,14 +51,18 @@ IPN验证以及支付请求如果出现建立SSL/TSL通道失败的异常,请使
 ```
 System.Net.ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 ```
+---
 
 #### 此项目沙盒测试账号(只能测试)：
 1. 商户账户：AsenB@qq.com 
 2. 客户账号：Asen@qq.com 密码：12345678
 
+---
+
 #### 沙盒账号申请地址
 [沙盒地址](https://developer.paypal.com/)
 
+---
 
 #### PayPal参数列表
 1. [支付参数列表](https://www.paypal-biz.com/product/pdf/PayPal_WPS_Guide_CN_V2.0.pdf)
