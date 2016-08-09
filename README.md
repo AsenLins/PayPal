@@ -6,6 +6,7 @@
 #### 如何使用：
 
 1. **使用对象方式调用：**
+
 ```
 Pay PayPal = new Pay("PayPal沙盒测试地址或正式地址");
 
@@ -25,6 +26,7 @@ PayPal.PostPay(new PayPalObj()
 使用对象方式只支持以上参数,如果需要更多参数,请使用自定义参数方式调用。
 
 2. **自定义参数方式调用：**
+
 ```
  Dictionary<string, string> Dt_Parames = new Dictionary<string, string>();
  /*添加自定义参数：*/
@@ -42,7 +44,7 @@ IPN验证以及支付请求如果出现建立SSL/TSL通道失败的异常,请使
 1. 安装.net 版本4.5。
 
 2. 使用已下代码,该代码使用的.net版本最低也要4.0,而且不一定会成功。
-3. 
+
 ```
 System.Net.ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 ```
