@@ -16,49 +16,48 @@ namespace PayPal
     internal static class PayHelper
     {
 
-        #region 发送web请求
+        #region 发送web请求验证IPN支付消息/使用TSL 1.2
         /// <summary>
-        /// 发送web请求
+        /// 发送web请求验证IPN支付消息/Tsl1.2
         /// </summary>
         /// <param name="Url">请求地址</param>
         /// <param name="Method">Post/Get请求</param>
         /// <param name="parame">参数</param>
         /// <param name="EncodeStr">编码方式</param>
-        /// <returns>PayPal生成的支付地址</returns>
-        //public static string PostRequest(string Url, string Method, string parame, string EncodeStr)
-        //{
-        //    try
-        //    {
-        //        if (Method == "GET")
-        //        {
-        //            Url = Url + "?" + parame;
-        //        }
+        /// <returns>返回的字符串</returns>
+        public static string PostRequest(string Url, string Method, string parame, string EncodeStr)
+        {
+            /*.net 4.5版本才有枚举值Tsl1.2,以下版本就用以下方法获取Tsl1.2,如果报异常,请安装.net框架4.5即可*/
+            System.Net.ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+            string Result = "";
 
-        //        /*构建请求*/
-        //        HttpWebRequest MyRequest = (HttpWebRequest)WebRequest.Create(Url);
+            if (Method == "GET")
+            {
+                Url = Url + "?" + parame;
+            }
+            /*构建请求*/
+            Stream StrInput = null;
+            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
+            myRequest.Method = Method;
 
-        //        MyRequest.Method = Method;
+            if (Method == "POST")
+            {
+                byte[] data = Encoding.GetEncoding(EncodeStr).GetBytes(parame);
+                myRequest.ContentType = "application/x-www-form-urlencoded;charset=utf-8";
+                myRequest.ContentLength = data.Length;
+                Stream newStream = myRequest.GetRequestStream();
+                /*发送请求*/
+                newStream.Write(data, 0, data.Length);
+                newStream.Close();
+            }
+            /*获取请求返回数据*/
+            StrInput = myRequest.GetResponse().GetResponseStream();
+            StreamReader StrRead = new StreamReader(StrInput);
+            Result = StrRead.ReadToEnd();
+            StrRead.Close();
+            return Result;
 
-        //        if (Method == "POST")
-        //        {
-        //            byte[] data = Encoding.GetEncoding(EncodeStr).GetBytes(parame);
-        //            MyRequest.ContentType = "application/x-www-form-urlencoded";
-               
-        //            MyRequest.ContentLength = data.Length;               
-        //            Stream newStream = MyRequest.GetRequestStream();
-                    
-        //            /*发送请求*/
-        //            newStream.Write(data, 0, data.Length);
-        //            newStream.Close();
-        //        }
-        //        /*获取响应地址*/
-        //        return MyRequest.GetResponse().ResponseUri.ToString();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-        //}
+        }
         #endregion
 
         #region 把支付对象转换为url参数
@@ -77,7 +76,8 @@ namespace PayPal
             StrParam.Append("&").Append("return=").Append(PayObj.return_url);
             StrParam.Append("&").Append("notify_url=").Append(PayObj.notify_url);
             StrParam.Append("&").Append("quantity=").Append(PayObj.quantity);
-            StrParam.Append("&").Append("title=").Append(PayObj.item_name);
+            StrParam.Append("&").Append("custom=").Append(PayObj.custom);
+            StrParam.Append("&").Append("item_name=").Append(PayObj.item_name);
             StrParam.Append("&").Append("cmd=").Append(PayObj.cmd);
             return StrParam.ToString();
         }

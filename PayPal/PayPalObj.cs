@@ -47,6 +47,10 @@ namespace PayPal
         /// </summary>
         public string business;
         /// <summary>
+        /// 客户端回传参数
+        /// </summary>
+        public string custom;
+        /// <summary>
         /// 编码方式
         /// </summary>
         public string charset="utf-8";

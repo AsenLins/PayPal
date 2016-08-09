@@ -2,3 +2,4 @@ E:\C#Project\PayPal\PayPal\bin\Debug\PayPal.dll
 E:\C#Project\PayPal\PayPal\bin\Debug\PayPal.pdb
 E:\C#Project\PayPal\PayPal\obj\Debug\PayPal.dll
 E:\C#Project\PayPal\PayPal\obj\Debug\PayPal.pdb
+E:\C#Project\PayPal\PayPal\obj\Debug\PayPal.csprojResolveAssemblyReference.cache

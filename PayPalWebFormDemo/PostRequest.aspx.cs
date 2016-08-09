@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using PayPal;
-namespace PayPalDemo.Controllers
+
+namespace PayPalWebFormDemo
 {
-    public class PayPalController : Controller
+    public partial class PostRequest : System.Web.UI.Page
     {
-        // GET: /PayPal/
-
-        public ActionResult Demo()
+        protected void Page_Load(object sender, EventArgs e)
         {
-            return View();
-        }
-
-
-        [HttpPost]
-        /*跳转到PayPal中支付。*/
-        public ActionResult PostPay() {
+            if (IsPostBack)
+            {
+                return;
+            }
 
             Pay PayPal = new Pay(Request.Form["url"]);
 
@@ -35,8 +32,6 @@ namespace PayPalDemo.Controllers
                 charset = Request.Form["charset"]
             });
 
-            return View();
         }
-
     }
 }
