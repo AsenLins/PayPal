@@ -1,5 +1,7 @@
 # PayPal
-实现了PayPal从后台发起支付请求,并非从from表单中提交,提升了安全性。
+#### 实现功能：
+1. 使用PayPal标准集成API从后台发起支付请求,并非从from表单中提交,提升了安全性。
+2. 实现了IPN消息验证函数。
 
 #### 如何使用：
 
@@ -34,10 +36,27 @@ PayPal.PostPay(new PayPalObj()
  PayPal.PostPay(Dt_Parames);
 ```
 
+#### 使用注意：
+IPN验证以及支付请求如果出现建立SSL/TSL通道失败的异常,请使用以下方式解决问题：
+1. 安装.net 版本4.5。
+
+2. 使用已下代码,该代码使用的.net版本最低也要4.0,而且不一定会成功。
+```
+System.Net.ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+```
+
+#### 此项目沙盒测试账号(只能测试)：
+1. 商户账户：AsenB@qq.com 
+2. 客户账号：Asen@qq.com 密码：12345678
+
+#### 沙盒账号申请地址
+[沙盒地址](https://developer.paypal.com/)
+
+
 #### PayPal参数列表
-1. (支付参数列表)[https://www.paypal-biz.com/product/pdf/PayPal_WPS_Guide_CN_V2.0.pdf]
-2. (回调参数列表)[https://www.paypal-biz.com/product/pdf/PayPal_IPN&PDT_Guide_V1.0.pdf]
-3. (Pay支付的货币码列表)[https://developer.paypal.com/docs/classic/api/currency_codes/?mark=currency]
+1. [支付参数列表](https://www.paypal-biz.com/product/pdf/PayPal_WPS_Guide_CN_V2.0.pdf)
+2. [IPN消息列表](https://www.paypal-biz.com/product/pdf/PayPal_IPN&PDT_Guide_V1.0.pdf])
+3. [Pay支付的货币码列表](https://developer.paypal.com/docs/classic/api/currency_codes/?mark=currency)
 
 
 
